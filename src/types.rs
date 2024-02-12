@@ -105,7 +105,7 @@ mod pkcs8_serde {
 }
 
 /// An RFC 7807 problem document as returned by the ACME server
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Problem {
     /// One of an enumerated list of problem types
@@ -249,7 +249,7 @@ pub struct Challenge {
 /// The order identity will usually be represented by an [Order](crate::Order).
 ///
 /// <https://datatracker.ietf.org/doc/html/rfc8555#section-7.1.3>
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct OrderState {
     /// Current status
@@ -457,7 +457,7 @@ pub enum ChallengeStatus {
 
 /// Status of an [Order](crate::Order)
 #[allow(missing_docs)]
-#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub enum OrderStatus {
     Pending,
